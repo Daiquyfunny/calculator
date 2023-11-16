@@ -1,2 +1,2 @@
 # calculator
-text-based boring calculator
+Text-based calculator
