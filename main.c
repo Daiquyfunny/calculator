@@ -1,59 +1,63 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int add(int n, int nx) {
-    return n + nx;
+double calculate(int operation, double n1, double n2) {
+  double result;
+  switch(operation) {
+    case 1:
+      result = n1 + n2;
+      break;
+    case 2:
+      result = n1 - n2;
+      break;
+    case 3:
+      result = n1 * n2;
+      break;
+    case 4:
+      result = n1 / n2;
+      break;
+    default:
+      return 1;
+      break;
+  }
+  
+  return result;
 }
 
-int sub(int n, int nx) {
-    return n - nx;
-}
-
-int mult(int n , int nx){
-    return n * nx;
-}
-
-int division(int n, int nx){
-    return n / nx;
-}
-
-int main() {
-    int input;
-
-    printf("1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\n");
-    printf("hey watchu want mate: ");
-    scanf("%d", &input);
-    switch (input) {
-        case 1:
-          {
-            int in; int inx;
-            printf("first num: ");scanf("%d", &in); printf("second num: ");scanf("%d", &inx);
-            printf("%d", add(in, inx));
-            break;
-          }
-        case 2:
-          {
-            int sin; int sinx;
-            printf("first num: ");scanf("%d", &sin); printf("second num: ");scanf("%d", &sinx);
-            printf("%d", sub(sin, sinx));
-            break;
-          }
-        case 3:
-          {
-            int min; int minx;
-            printf("first num: ");scanf("%d", &min); printf("second num: ");scanf("%d", &minx);
-            printf("%d", mult(min, minx));
-            break;
-          }
-        case 4:
-          {
-            int din; int dinx;
-            printf("first num: ");scanf("%d", &din); printf("second num: ");scanf("%d", &dinx);
-            printf("%d", division(din, dinx));
-            break;
-          }
-        default:
-            printf("yeah idk whatchu talking about");
+int main(void) {
+  int a;
+  double n1, n2;
+  char input[1024], na[1024], nb[1024];
+  
+  printf("1. addtion 2. subtraction 3. multiplication 4. division\n");
+  do {
+    printf("operation: ");
+    if (!fgets(input, 1024, stdin)) {
+      return 1;
     }
-    
-    return 0;
+
+    a = atoi(input);
+  } while (a == 0);
+
+  do {
+    printf("na: ");
+    if (!fgets(na, 1024, stdin)) {
+      return 1;
+    }
+
+    n1 = strtod(na, NULL);
+  } while (n1 == 0);
+
+  do {
+    printf("nb: ");
+    if (!fgets(nb, 1024, stdin)) {
+      return 1;
+    }
+
+    n2 = strtod(nb, NULL);
+  } while (n2 == 0);
+
+  printf("%lf", calculate(a, n1, n2));
+  
+  return 0;
 }
