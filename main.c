@@ -31,12 +31,12 @@ int userinputI(char *prompt) {
   int a;
   char x[1024];
 
-  printf("%s: ", prompt);
   do {
+    printf("%s", prompt);
     if (!fgets(x, sizeof(x), stdin)) {
-      return 1; 
+      return 1;
     }
-  } while (x == 0);
+  } while (atoi(x) == 0);
   
   a = atoi(x);
   return a;
@@ -46,16 +46,21 @@ double userinputD(char *prompt) {
   double a;
   char x[1024];
 
-  printf("%s: ", prompt);
   do {
+    printf("%s", prompt);
     if (!fgets(x, sizeof(x), stdin)) {
       return 1; 
     }
-  } while (x == 0);
+  } while (strtod(x, NULL) == 0);
   
   a = strtod(x, NULL);
   return a;
 }
+
+struct sphere {
+  double volume;
+  double surfaceArea;
+};
 
 struct circle {
   double perimeter;
@@ -70,11 +75,19 @@ struct circle fc(char *prompt) {
   return nc;
 }
 
+struct sphere fs(char *prompt) {
+  double radius = userinputD(prompt);
+  double volume = 4/3*pi*pow(radius, 3);
+  double surfaceArea = 4*pi*pow(radius, 2);
+  struct sphere ns = {volume, surfaceArea};
+  return ns;
+}
+
 int main(void) {
   int a, input;
   double n1, n2;
   
-  printf("1. arithmetic 2. circle\n");
+  printf("1. arithmetic 2. circle 3. sphere\n");
   input = userinputI("input: ");
   switch(input) {
     case 1:
@@ -89,6 +102,12 @@ int main(void) {
       {
         struct circle nc = fc("radius: ");
         printf("perimeter: %lf\narea: %lf", nc.perimeter, nc.area);
+      }
+      break;
+    case 3:
+      {
+        struct sphere ns = fs("radius: ");
+        printf("volume: %lf\narea: %lf", ns.volume, ns.surfaceArea);
       }
       break;
     default:
