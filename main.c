@@ -23,7 +23,7 @@ double calculate(int operation, double n1, double n2) {
       return 1;
       break;
   }
-  
+
   return result;
 }
 
@@ -37,7 +37,7 @@ int userinputI(char *prompt) {
       return 1;
     }
   } while (atoi(x) == 0);
-  
+
   a = atoi(x);
   return a;
 }
@@ -49,10 +49,10 @@ double userinputD(char *prompt) {
   do {
     printf("%s", prompt);
     if (!fgets(x, sizeof(x), stdin)) {
-      return 1; 
+      return 1;
     }
   } while (strtod(x, NULL) == 0);
-  
+
   a = strtod(x, NULL);
   return a;
 }
@@ -66,6 +66,53 @@ struct circle {
   double perimeter;
   double area;
 };
+
+struct triangle {
+  double opposite;
+  double adjacent;
+  double hypotenuse;
+};
+
+double pythagoreanTheorem(double opp, double adj, double hyp) {
+  double x;
+  if (hyp == 0) {
+    x = sqrt(pow(opp, 2) + pow(adj, 2)); 
+  } else if (opp == 0) {
+    x = sqrt(pow(adj, 2) - pow(hyp, 2)); 
+  } else if (adj == 0) {
+    x = sqrt(pow(opp, 2) - pow(hyp, 2));
+  }
+
+  return x;
+}
+
+struct triangle fti(char *prompt) {
+  double opp = 0;
+  double adj = 0;
+  double hyp = 0;
+  
+  do {
+    printf("1. opposite: %lf\n2. adjacent: %lf\n3. hypotenuse: %lf\n\n", opp, adj, hyp);
+    int input = userinputI(prompt);
+    switch(input) {
+      case 1:
+        opp = userinputD("opp: ");
+        break;
+      case 2:
+        adj = userinputD("adj: ");
+        break;
+      case 3:
+        hyp = userinputD("hyp: ");
+        break;
+      default:
+        printf("err wut duh sigma?");
+        break;
+      }
+  }
+  while (!opp && !adj || !opp && !hyp || !adj && !hyp); 
+  struct triangle nti = {opp, adj, hyp};
+  return nti;
+}
 
 struct circle fc(char *prompt) {
   double radius = userinputD(prompt);
@@ -86,8 +133,8 @@ struct sphere fs(char *prompt) {
 int main(void) {
   int a, input;
   double n1, n2;
-  
-  printf("1. arithmetic 2. circle 3. sphere\n");
+
+  printf("1. arithmetic 2. circle 3. sphere 4. pythagorean\n");
   input = userinputI("input: ");
   switch(input) {
     case 1:
@@ -110,10 +157,16 @@ int main(void) {
         printf("volume: %lf\narea: %lf", ns.volume, ns.surfaceArea);
       }
       break;
+    case 4:
+      {
+        struct triangle nturtle = fti("input: ");
+        printf("%lf", pythagoreanTheorem(nturtle.adjacent, nturtle.opposite, nturtle.hypotenuse));
+        break; 
+      }
     default:
       return 1;
       break;
   }
-  
+
   return 0;
 }
