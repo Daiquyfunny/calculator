@@ -124,7 +124,7 @@ struct circle fc(char *prompt) {
 
 struct sphere fs(char *prompt) {
   double radius = userinputD(prompt);
-  double volume = 4/3*pi*pow(radius, 3);
+  double volume = (double)4/3*pi*pow(radius, 3);
   double surfaceArea = 4*pi*pow(radius, 2);
   struct sphere ns = {volume, surfaceArea};
   return ns;
