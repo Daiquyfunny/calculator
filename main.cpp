@@ -101,13 +101,13 @@ struct triangle fti(const char *prompt) {
     int input = userinputI("input: ");
     switch (input) {
       case 1:
-        userinputD("opp: ");
+        opp = userinputD("opp: ");
         break;
       case 2:
-        userinputD("adj: ");
+        adj = userinputD("adj: ");
         break;
       case 3:
-        userinputD("hyp: ");
+        hyp = userinputD("hyp: ");
         break;
       default:
         fprintf(stderr, "nuh uh: \n");
