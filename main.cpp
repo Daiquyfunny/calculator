@@ -149,8 +149,8 @@ int main() {
     case 1:
       printf("1. addition 2. subtraction 3. multiplication 4. division\n");
       a = userinputI("operation: ");
-      n1 = userinputI("n1: ");
-      n2 = userinputI("n2: "); 
+      n1 = userinputD("n1: ");
+      n2 = userinputD("n2: "); 
 
       std::cout << "result: " << calculate(a, n1, n2);
       break;
