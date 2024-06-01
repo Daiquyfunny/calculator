@@ -1,7 +1,3 @@
-//
-// Created by sarwa on 6/1/2024.
-//
-
 #include "../include/geometry.h"
 #include "../include/userinput.h"
 #include <cmath>

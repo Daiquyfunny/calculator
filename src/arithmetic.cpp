@@ -1,7 +1,3 @@
-//
-// Created by sarwa on 6/1/2024.
-//
-
 #include "../include/arithmetic.h"
 #include <iostream>
 
