@@ -3,12 +3,13 @@
 #include "../include/arithmetic.h"
 #include "../include/geometry.h"
 #include "../include/userinput.h"
+#include "../include/temperature.h"
 
 int main() {
     int input;
     do {
-        input = userinputI("1. Arithmetic 2. Circle 3. Sphere 4. Pythagorean\nSelect an option: ");
-    } while (input < 1 || input > 4);
+        input = userinputI("1. Arithmetic 2. Circle 3. Sphere 4. Pythagorean 5. Temperature\nSelect an option: ");
+    } while (input < 1 || input > 5);
 
     switch (input) {
         case 1: {
@@ -34,6 +35,12 @@ int main() {
         case 4: {
             triangle t = fti("Sides of the triangle: ");
             std::cout << "Opposite: " << t.opposite << "\nAdjacent: " << t.adjacent << "\nHypotenuse: " << t.hypotenuse << std::endl;
+            break;
+        }
+        case 5: {
+            int cvert = userinputI("1. Celsius 2. Fahrenheit: ");
+            double temp = convert(cvert);
+            std::cout << temp;
             break;
         }
     }

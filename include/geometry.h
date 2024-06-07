@@ -19,7 +19,6 @@ struct triangle {
     double hypotenuse;
 };
 
-
 double pyTheorem(double opp, double adj, double hyp);
 struct triangle fti(const char *prompt);
 struct sphere fs(const char *prompt);
