@@ -1,16 +1,15 @@
 #include "../include/userinput.h"
 #include <iostream>
+#include <limits>
 
 int userinputI(const char *prompt) {
-    std::string input;
     int x;
-    std::cout << prompt;
-    std::cin >> input;
 
-    if (input.find('.') != std::string::npos || std::cin.fail()) {
-        x = 0;
-    } else {
-        x = stoi(input);
+    std::cout << prompt;
+    while (!(std::cin >> x)) {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cerr << "Error, try again: ";
     }
 
     return x;
@@ -18,14 +17,12 @@ int userinputI(const char *prompt) {
 
 double userinputD(const char *prompt) {
     double x;
-    std::string input;
-    std::cout << prompt;
-    std::cin >> input;
 
-    if (std::cin.fail()) {
-        x = 0;
-    } else {
-        x = std::stod(input);
+    std::cout << prompt;
+    while (!(std::cin >> x)) {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cerr << "Error, try again: ";
     }
 
     return x;
