@@ -14,8 +14,13 @@ int main() {
 
   switch (input) {
   case 1: {
-    int operation = userinputI("1. Addition 2. Subtraction 3. Multiplication "
-                               "4. Division\nSelect operation: ");
+    int operation;
+
+    do {
+      operation = userinputI("1. Addition 2. Subtraction 3. Multiplication "
+                             "4. Division\nSelect operation: ");
+    } while (input < 1 || input > 4);
+
     double n1 = userinputD("First number: ");
     double n2 = userinputD("Second number: ");
     double result = calculate(operation, n1, n2);
