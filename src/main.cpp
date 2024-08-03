@@ -1,5 +1,6 @@
 #include "../include/arithmetic.h"
 #include "../include/geometry.h"
+#include "../include/sequence.h"
 #include "../include/temperature.h"
 #include "../include/userinput.h"
 #include <cmath>
@@ -9,8 +10,8 @@ int main() {
   int input;
   do {
     input = userinputI("1. Arithmetic 2. Circle 3. Sphere 4. Pythagorean 5. "
-                       "Temperature\nSelect an option: ");
-  } while (input < 1 || input > 5);
+                       "Temperature 6. Fibonacci sequence\nSelect an option: ");
+  } while (input < 1 || input > 6);
 
   switch (input) {
   case 1: {
@@ -56,6 +57,11 @@ int main() {
       std::cout << temp << "C\n";
     }
 
+    break;
+  }
+  case 6: {
+    int ip = userinputI("Input the amount of Fibonacci numbers you want: ");
+    std::cout << fibonacci(ip) << "\n";
     break;
   }
   }

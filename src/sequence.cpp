@@ -1,12 +1,21 @@
 #include "../include/sequence.h"
+#include <iostream>
 
 // fib(n) = fib(n - 1) + fib (n - 2)
 int fibonacci(int n) {
-  if (n == 1) {
-    return n;
-  } else if (n == 0) {
-    return n;
-  };
+  int a = 0, b = 1, c, i;
+  if (n == 0) {
+    return a;
+  }
 
-  return fibonacci(n - 1) + fibonacci(n - 2);
+  for (i = 2; i <= n; i++) {
+    c = a + b;
+    a = b;
+    b = c;
+    if (i < n) {
+      std::cout << b << ", ";
+    }
+  }
+
+  return b;
 }
