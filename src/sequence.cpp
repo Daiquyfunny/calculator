@@ -2,8 +2,8 @@
 #include <iostream>
 
 // fib(n) = fib(n - 1) + fib (n - 2)
-int fibonacci(int n) {
-  int a = 0, b = 1, c, i;
+long long int fibonacci(long long int n) {
+  long long int a = 0, b = 1, c, i;
   if (n == 0) {
     return a;
   }

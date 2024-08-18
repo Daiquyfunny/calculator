@@ -1,6 +1,6 @@
 #ifndef CALCULATOR_SEQUENCE_H
 #define CALCULATOR_SEQUENCE_H
 
-int fibonacci(int n);
+long long int fibonacci(long long int n);
 
 #endif
