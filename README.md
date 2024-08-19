@@ -13,4 +13,4 @@ make
 ## Contributing
 Feel free to fork this repository and submit pull requests!
 ## License
-[MIT](LICENSE) © Daiquyfunny
+[GPL](LICENSE) © Daiquyfunny
