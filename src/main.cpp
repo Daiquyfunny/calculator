@@ -62,8 +62,7 @@ int main() {
   case 6: {
     long long int ip =
         userinputL("Input the amount of Fibonacci numbers you want: ");
-    std::cout << fibonacci(ip) << "\n";
-    break;
+    fibonacci(ip);
   }
   }
 
